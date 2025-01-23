@@ -22,7 +22,6 @@ export class MoviesManagerService {
       }));
   }
 
-  //***Solución 'fácil'. Trabajando sobre el array movies***
   getMovies() {
     return this.movies;
   }
