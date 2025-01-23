@@ -1,0 +1,7 @@
+{
+  "name": "SANBLAS_202412_Medium_Cine",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
