@@ -12,6 +12,19 @@ export class MoviesManagerService {
   constructor() { 
     this.httpClient.get(MoviesManagerService.URL).subscribe(
       (data : IMovie[] | any) => {
+        
+        /*
+                {
+                  "date": "2022-04-03",
+                  "movies": [
+                    {
+                      "Title": "The Shawshank Redemption",
+                      "Year": "1994",
+                      "Rated": "R",
+                      "Released": "14 Oct 1994",
+                      "Runtime": "142 min",
+        */
+       //(Siguiente línea) data.movies es el acceso a la propiedad movies del objeto que nos devuelve el servidor
         data.movies.forEach((movie : IMovie) => {
           this.movies.push(movie);
         }
