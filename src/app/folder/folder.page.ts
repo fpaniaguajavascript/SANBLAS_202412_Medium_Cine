@@ -4,12 +4,13 @@ import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent 
 import { MoviesManagerService } from '../services/movies-manager.service';
 import { IMovie } from '../interfaces/imovie';
 import { CommonModule } from '@angular/common';
+import { FichaComponent } from "../components/ficha/ficha.component";
 
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
   styleUrls: ['./folder.page.scss'],
-  imports: [CommonModule, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent],
+  imports: [CommonModule, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, FichaComponent],
 })
 export class FolderPage implements OnInit {
   public folder!: string;
@@ -18,6 +19,7 @@ export class FolderPage implements OnInit {
   public peliculas : IMovie[] | undefined;
 
   moviesManager = inject(MoviesManagerService);
+
   constructor() {
   }
 
@@ -39,6 +41,6 @@ export class FolderPage implements OnInit {
       }
     });
     //***Fin de solución difícil***
-    */
+    */    
   }
 }

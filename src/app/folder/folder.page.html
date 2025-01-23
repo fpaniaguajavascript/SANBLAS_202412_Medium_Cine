@@ -16,9 +16,7 @@
 
   <div id="container">
     @for (item of peliculas; track $index) {
-      <div>{{item.Title}}</div>
+      <app-ficha [pelicula]="item"></app-ficha>
     }
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </ion-content>

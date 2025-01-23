@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IMovie } from '../interfaces/imovie';
-import { map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';//Forma parte de la solución 'difícil'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class MoviesManagerService {
   static URL = 'https://fpaniaguajavascript.github.io/movies-250.json';
   private movies: IMovie[] = [];//Forma parte de la solución 'fácil'
   private httpClient = inject(HttpClient);
-
+  
   //***Solución 'fácil'.***
   constructor() {
     this.httpClient.get(MoviesManagerService.URL).subscribe(
@@ -24,7 +24,7 @@ export class MoviesManagerService {
   getMovies() {
     return this.movies;
   }
-  //***Fin de solución 'fácil'***
+  //***Fin de solución 'fácil'.***
 
   //***Solución 'difícil'***
   /*
