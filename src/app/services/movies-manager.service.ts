@@ -1,37 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IMovie } from '../interfaces/imovie';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesManagerService {
   static URL = 'https://fpaniaguajavascript.github.io/movies-250.json';
-  private movies : IMovie[] = [];
+  private movies: IMovie[] = [];//Forma parte de la solución 'fácil'
   private httpClient = inject(HttpClient);
-  constructor() { 
+
+  //Solución 'fácil'. Trabajando sobre el array movies
+  /*
+  constructor() {
     this.httpClient.get(MoviesManagerService.URL).subscribe(
-      (data : IMovie[] | any) => {
-        
-        /*
-                {
-                  "date": "2022-04-03",
-                  "movies": [
-                    {
-                      "Title": "The Shawshank Redemption",
-                      "Year": "1994",
-                      "Rated": "R",
-                      "Released": "14 Oct 1994",
-                      "Runtime": "142 min",
-        */
-       //(Siguiente línea) data.movies es el acceso a la propiedad movies del objeto que nos devuelve el servidor
-        data.movies.forEach((movie : IMovie) => {
+      ((data: IMovie[] | any) => {
+        data.movies.forEach((movie: IMovie) => {
           this.movies.push(movie);
-        }
-      )});
+        });
+      }));
   }
 
+  //***Solución 'fácil'. Trabajando sobre el array movies***
   getMovies() {
     return this.movies;
   }
+  */
+  //***Fin de solución 'fácil'***
+
+  //***Solución 'difícil'***
+  constructor() {
+    
+  }
+
+  getMovies(): Observable<IMovie[]> {
+    return this.httpClient.get<{ movies: IMovie[] }>(MoviesManagerService.URL).pipe(
+      map(response => response.movies)
+    );
+  }
+  //***Fin de solución 'difícil'***
 }
