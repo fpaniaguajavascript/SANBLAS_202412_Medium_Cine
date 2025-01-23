@@ -11,7 +11,7 @@ export class MoviesManagerService {
   private movies: IMovie[] = [];//Forma parte de la solución 'fácil'
   private httpClient = inject(HttpClient);
 
-  //Solución 'fácil'. Trabajando sobre el array movies
+  //***Solución 'fácil'.***
   /*
   constructor() {
     this.httpClient.get(MoviesManagerService.URL).subscribe(
