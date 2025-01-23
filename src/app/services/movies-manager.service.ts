@@ -12,7 +12,6 @@ export class MoviesManagerService {
   private httpClient = inject(HttpClient);
 
   //***Solución 'fácil'.***
-  /*
   constructor() {
     this.httpClient.get(MoviesManagerService.URL).subscribe(
       ((data: IMovie[] | any) => {
@@ -25,12 +24,11 @@ export class MoviesManagerService {
   getMovies() {
     return this.movies;
   }
-  */
   //***Fin de solución 'fácil'***
 
   //***Solución 'difícil'***
+  /*
   constructor() {
-    
   }
 
   getMovies(): Observable<IMovie[]> {
@@ -38,5 +36,6 @@ export class MoviesManagerService {
       map(response => response.movies)
     );
   }
+  */
   //***Fin de solución 'difícil'***
 }
