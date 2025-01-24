@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonBadge, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent } from '@ionic/angular/standalone';
 import { MoviesManagerService } from '../services/movies-manager.service';
 import { IMovie } from '../interfaces/imovie';
 import { CommonModule } from '@angular/common';
@@ -10,10 +10,10 @@ import { FichaComponent } from "../components/ficha/ficha.component";
   selector: 'app-folder',
   templateUrl: './folder.page.html',
   styleUrls: ['./folder.page.scss'],
-  imports: [CommonModule, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, FichaComponent],
+  imports: [IonBadge, CommonModule, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, FichaComponent],
 })
 export class FolderPage implements OnInit {
-  public folder!: string;
+  public genero!: string;
   private activatedRoute = inject(ActivatedRoute);
 
   public peliculas : IMovie[] | undefined;
@@ -24,10 +24,14 @@ export class FolderPage implements OnInit {
   }
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    this.genero = this.activatedRoute.snapshot.paramMap.get('genero') as string;
 
     //***Solución 'fácil'***
-    this.peliculas = this.moviesManager.getMovies();
+    if (this.genero === 'All') {
+      this.peliculas = this.moviesManager.getMovies();
+    } else {
+      this.peliculas = this.moviesManager.getMovies().filter(p => p.Genre.includes(this.genero));
+    }
     //***Fin de solución 'fácil'***
 
     /*
